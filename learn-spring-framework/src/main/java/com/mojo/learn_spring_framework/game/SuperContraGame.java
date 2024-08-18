@@ -1,15 +1,15 @@
 package com.mojo.learn_spring_framework.game;
 
-public class MarioGame implements GamingConsole {
+public class SuperContraGame implements GamingConsole {
 
     @Override
     public void up() {
-        System.out.println("Jump");
+        System.out.println("Up");
     }
 
     @Override
     public void down() {
-        System.out.println("Go into a hole");
+        System.out.println("Sit down");
     }
 
     @Override
@@ -19,6 +19,6 @@ public class MarioGame implements GamingConsole {
 
     @Override
     public void right() {
-        System.out.println("Accelerate");
+        System.out.println("Shoot a bullet");
     }
 }
