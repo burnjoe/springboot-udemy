@@ -10,5 +10,10 @@ public class AppGamingBasicJava {
         var marioGame = new MarioGame();
         var gameRunner = new GameRunner(marioGame);
         gameRunner.run();
+        
+        // Unable to pass the superContraGame to GameRunner() since it's tightly coupled to MarioGame`
+        // var superContraGame = new SuperContraGame();
+        // var gameRunner = new GameRunner(superContraGame);
+        // gameRunner.run();
     }
 }
