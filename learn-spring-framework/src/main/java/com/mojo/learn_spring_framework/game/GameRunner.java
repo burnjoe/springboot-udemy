@@ -1,11 +1,10 @@
 package com.mojo.learn_spring_framework.game;
 
 public class GameRunner {
-    // This makes the code tightly coupled
-    private MarioGame game;
+    // This makes the code loosely coupled
+    private GamingConsole game;
 
-    // This makes the code tightly coupled
-    public GameRunner(MarioGame game) {
+    public GameRunner(GamingConsole game) {
         this.game = game;
     }
 
