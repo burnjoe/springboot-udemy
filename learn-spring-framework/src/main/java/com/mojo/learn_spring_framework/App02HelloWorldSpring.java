@@ -12,7 +12,7 @@ public class App02HelloWorldSpring {
         // HelloWorldConfiguration - @Configuration
         // name - @Bean
 
-        // 3: Retrieving Beans managed by Spring
+        // 3: Retrieving Beans managed by Spring Context
         System.out.println(context.getBean("name"));
     }
 }
