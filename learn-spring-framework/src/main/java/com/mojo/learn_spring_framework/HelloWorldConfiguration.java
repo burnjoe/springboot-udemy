@@ -27,7 +27,8 @@ public class HelloWorldConfiguration {
         return new Person("Lawrence", 22);
     }
 
-    @Bean
+    // This creates a bean with custom bean name "myAddress" than "address"
+    @Bean(name = "myAddress")
     public Address address() {
         return new Address("Halang", "Calamba");
     }

@@ -13,9 +13,16 @@ public class App02HelloWorldSpring {
         // name - @Bean
 
         // 3: Retrieving Beans managed by Spring Context
+        // Get bean by name
         System.out.println(context.getBean("name"));
         System.out.println(context.getBean("age"));
         System.out.println(context.getBean("person"));
-        System.out.println(context.getBean("address"));
+        
+        // Get bean with custom bean name
+        System.out.println(context.getBean("myAddress"));
+        
+        // Get bean by type
+        // It only expects to return single bean and not multiple bean with the same type
+        System.out.println(context.getBean(Address.class));
     }
 }
