@@ -18,6 +18,13 @@ public class App02HelloWorldSpring {
         System.out.println(context.getBean("age"));
         System.out.println(context.getBean("person"));
         
+        // Get bean 'person2MethodCall' that calls other method/bean within its method body
+        System.out.println(context.getBean("person2MethodCall"));
+        
+        // Get bean 'person3Parameters' that fills the parameters through Auto Wiring
+        // Means that it passes the required arguments automatically with Spring's Auto Wiring 
+        System.out.println(context.getBean("person3Parameters"));
+
         // Get bean with custom bean name
         System.out.println(context.getBean("myAddress"));
         
