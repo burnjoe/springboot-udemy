@@ -1,5 +1,7 @@
 package com.mojo.learn_spring_framework;
 
+import java.util.Arrays;
+
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class App02HelloWorldSpring {
@@ -31,5 +33,9 @@ public class App02HelloWorldSpring {
         // Get bean by type
         // It only expects to return single bean and not multiple bean with the same type
         System.out.println(context.getBean(Address.class));
+
+        // List all the beans managed by the spring context
+        Arrays.stream(context.getBeanDefinitionNames())
+            .forEach(System.out::println);
     }
 }
