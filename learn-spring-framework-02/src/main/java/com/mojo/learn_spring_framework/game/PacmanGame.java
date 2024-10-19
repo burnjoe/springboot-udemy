@@ -1,5 +1,9 @@
 package com.mojo.learn_spring_framework.game;
 
+import org.springframework.stereotype.Component;
+
+// Annotated it with @Component to let Spring creates the PacmanGame for us
+@Component
 public class PacmanGame implements GamingConsole {
 
     @Override

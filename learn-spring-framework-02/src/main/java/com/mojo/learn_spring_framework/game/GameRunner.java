@@ -1,5 +1,9 @@
 package com.mojo.learn_spring_framework.game;
 
+import org.springframework.stereotype.Component;
+
+// Annotated it with @Component to let Spring creates the GameRunner for us
+@Component
 public class GameRunner {
     // This makes the code loosely coupled
     private GamingConsole game;
