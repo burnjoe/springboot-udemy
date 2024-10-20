@@ -14,7 +14,6 @@ public class GamingAppLauncherApplication {
 
     public static void main(String[] args) {
         try (var context = new AnnotationConfigApplicationContext(GamingAppLauncherApplication.class)) {
-            
             // Autowires the GamingConsole (PacmanGame) which annotated by @Component
             context.getBean(GamingConsole.class).up();
             

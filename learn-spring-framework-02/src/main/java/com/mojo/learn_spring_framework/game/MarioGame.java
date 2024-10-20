@@ -1,5 +1,11 @@
 package com.mojo.learn_spring_framework.game;
 
+// import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Component;
+
+@Component
+// Make this primary class or implementation in autowiring
+// @Primary
 public class MarioGame implements GamingConsole {
 
     @Override
