@@ -1,11 +1,8 @@
-package com.mojo.learn_spring_framework;
+package com.mojo.learn_spring_framework.game;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-
-import com.mojo.learn_spring_framework.game.GameRunner;
-import com.mojo.learn_spring_framework.game.GamingConsole;
 
 @Configuration
 // Specify base package where Spring would look for components (@Component, @Service, @Repository, @Controller, etc.)
