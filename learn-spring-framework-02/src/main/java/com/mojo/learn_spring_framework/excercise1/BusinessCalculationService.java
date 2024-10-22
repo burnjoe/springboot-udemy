@@ -7,10 +7,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class BusinessCalculationService {
     
-    DataService dataService;
+    private DataService dataService;
 
     // Constructor injection - uses the bean/component marked with @Primary
     public BusinessCalculationService(DataService dataService) {
+        super();
         this.dataService = dataService;
     }
     
