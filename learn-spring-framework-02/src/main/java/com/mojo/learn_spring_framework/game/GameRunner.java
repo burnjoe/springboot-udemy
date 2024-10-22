@@ -3,13 +3,6 @@ package com.mojo.learn_spring_framework.game;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-/**
- * Dependency Injection Types:
- * 1. Constructor-based - creating bean using constructor
- * 2. Setter-based - set by calling setter methods on your beans
- * 3. Field - injected using reflection
- */
-
 // Annotated it with @Component to let Spring creates the GameRunner for us
 @Component
 public class GameRunner {
