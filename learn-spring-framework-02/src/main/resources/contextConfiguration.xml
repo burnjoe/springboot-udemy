@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context" xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"> <!-- bean definitions here -->
+
+    <!-- This is an alternative version of @Configuration class - an XML Configuration -->
+    <!-- However, it is important to note that XML Configuration is not very frequently used these days -->
+    
+    <!-- Bean -->
+    <bean id="name" class="java.lang.String">
+        <!-- Bean constructor - Constructor Injection -->
+        <constructor-arg value="Ranga" />
+    </bean>
+
+    <bean id="age" class="java.lang.Integer">
+        <constructor-arg value="31" />
+    </bean>
+
+    <!-- This is equivalent to @ComponentScan from Spring Framework -->
+    <!-- Printing bean definition names of this configuration returns defined beans from game package -->
+    <!-- This like imports or scans the beans defined in game package -->
+    <!-- <context:component-scan base-package="com.mojo.learn_spring_framework.game" /> -->
+
+    <!-- This scans the specific package: "game" where bean "PacmanGame" is defined -->
+    <bean id="game" class="com.mojo.learn_spring_framework.game.PacmanGame" />
+
+    <bean id="gameRunner" class="com.mojo.learn_spring_framework.game.GameRunner">
+        <!-- This constructor injects the bean: "game" to GameRunner's constructor as defined in the GameRunner bean class -->
+        <!-- ref is reference to defined bean (in this case "game") in this contextConfiguration -->
+        <constructor-arg ref="game" />
+    </bean>
+</beans>
