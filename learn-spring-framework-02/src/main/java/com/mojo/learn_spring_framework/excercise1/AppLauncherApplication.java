@@ -4,6 +4,16 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
+/*
+ * Spring Stereotype Annotations:
+ * @Component - generic annotation applicable for any class (Base) 
+ * 
+ * Specializations of @Component:
+ * 1. @Service
+ * 2. @Controller
+ * 3. @Repository
+ */
+
 @Configuration
 @ComponentScan
 public class AppLauncherApplication {
