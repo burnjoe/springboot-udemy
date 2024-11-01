@@ -12,3 +12,16 @@
     - groupId: similar to package name
     - artifactId: similar to class name
     - These are important as it is how other projects can use this project as dependency
+
+
+Exploring Maven Build Life Cycle
+    - When we run a maven command, maven build life cycle is used
+    - Build LifeCycle is a sequence of steps
+        1. Validate
+        2. Compile
+        3. Test
+        4. Package
+        5. Integration Test
+        6. Verify
+        7. Install
+        8. Deploy (if configured)

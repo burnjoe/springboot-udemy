@@ -4,3 +4,5 @@ Maven Commands:
     - Displays the full, resolved POM, including inherited configurations and dependencies, to show how Maven interprets the project.
 2. mvn dependency:tree
     - Shows the project's dependency hierarchy, including transitive dependencies, to help identify conflicts.
+3. mvn install
+    - Compiles, tests, and packages the project, then installs the built artifact (like a JAR) to the local Maven repository, making it available for other projects on the same machine.
