@@ -1,0 +1,6 @@
+Maven Commands:
+
+1. mvn help:effective-pom
+    - Displays the full, resolved POM, including inherited configurations and dependencies, to show how Maven interprets the project.
+2. mvn dependency:tree
+    - Shows the project's dependency hierarchy, including transitive dependencies, to help identify conflicts.

@@ -1,0 +1,14 @@
+1. Maven Dependencies
+    - Frameworks & libraries used in a project
+    - Example: spring-boot-starter-web and spring-boot-starter-test
+    - The reason why there are many dependencies in the classpath is due to Transitive Dependencies
+    - Spring dependencies are not the same as Maven dependencies
+
+2. Parent POM
+    - Dependency Management: spring-boot-dependencies
+    - Properties: java.version, plugins and configurations
+
+3. Name of our Project (groupId + artifactId)
+    - groupId: similar to package name
+    - artifactId: similar to class name
+    - These are important as it is how other projects can use this project as dependency
