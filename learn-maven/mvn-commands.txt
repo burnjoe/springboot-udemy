@@ -26,3 +26,6 @@ Maven Commands:
 
 9. mvn package
     - Compiles the source code, runs tests, and packages the compiled code into a distributable format, such as a JAR or WAR file, which is stored in the target directory.
+
+10. mvn spring-boot:build-image
+    - Builds a Docker image for the Spring Boot application based on the project's configuration and dependencies, allowing for easy deployment in containerized environments.
