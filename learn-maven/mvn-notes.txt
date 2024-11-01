@@ -1,0 +1,65 @@
+Exploring Maven and POM.xml
+    1. Maven Dependencies
+        - Frameworks & libraries used in a project
+        - Example: spring-boot-starter-web and spring-boot-starter-test
+        - The reason why there are many dependencies in the classpath is due to Transitive Dependencies
+        - Spring dependencies are not the same as Maven dependencies
+
+    2. Parent POM
+        - Dependency Management: spring-boot-dependencies
+        - Properties: java.version, plugins and configurations
+
+    3. Name of our Project (groupId + artifactId)
+        - groupId: similar to package name
+        - artifactId: similar to class name
+        - These are important as it is how other projects can use this project as dependency
+
+
+Exploring Maven Build Life Cycle
+    - When we run a maven command, maven build life cycle is used
+    - Build LifeCycle is a sequence of steps
+        1. Validate
+        2. Compile
+        3. Test
+        4. Package
+        5. Integration Test
+        6. Verify
+        7. Install
+        8. Deploy (if configured)
+
+
+How does Maven work?
+    - Maven follows Convention over Configuration
+        1. Pre defined folder structure
+        2. Almost all Java projects follow Maven structure (Consistency)
+    - Maven Central Repository contains jars (and others) indexed by artifact id and group id
+        - https://repo1.maven.org/
+        - Stores all the versions of dependencies
+        - repositories > repository
+        - pluginRepositories > pluginRepository
+    - When a dependency is added to pom.xml, Maven tries to download the dependency
+        - Downloaded dependencies are stored inside your maven local repository
+        - Local Repository: a temp folder on your machine where maven stores the jar and dependency files that are downloaded from Maven Repository
+
+
+How are Spring Releases Versioned?
+    - Version Scheme: MAJOR.MINOR.PATCH[-MODIFIER]
+        - Example: 4.0.3 or 4.0.3-RC1 or 4.0.3-SNAPSHOT
+        - MAJOR: Significant amount of work to upgrade (10.0.0 to 11.0.0)
+        - MINOR: Little to no work to upgrade (10.1.0 to 10.2.0)
+        - PATCH: No work to upgrade (10.5.4 to 10.5.5)
+        - MODIFIER: Optional modifier
+            - Milestone - M1, M2, ... (Example: 10.3.5-M1)
+            - Release Candidate - RC1, RC2, ... (Example: 10.3.5-RC1)
+            - Snapshot - SNAPSHOT (Example: 10.3.5-SNAPSHOT)
+            - Release - Modifier will be ABSENT (Example: 10.3.5)
+        - Example versions in order:
+            1. 10.0.0-SNAPSHOT
+            2. 10.0.0-M1
+            3. 10.0.0-M2
+            4. 10.0.0-RC1
+            5. 10.0.0-RC2
+            6. 10.0.0
+        - Recommendations:
+            - Avoid using SNAPSHOT versions
+            - Use ONLY Released versions in PRODUCTION
