@@ -1,0 +1,15 @@
+Get Production Ready with Spring Boot
+    - There are different types of environments some of which are:
+        - Development (dev)
+        - Quality Assurance (qa)
+        - Staging (stage)
+        - Production (prod)
+    - There are multiple logging levels supported in Spring Boot:
+    - Top-level logs all beneath it, for example 'debug' logs debug, info, warning, and error
+    - Example: logging.level.org.springframework=debug
+        1. trace: most detailed capturing almost all events (top-level)
+        2. debug: detailed info on app flow
+        3. info: general runtime info about app major events
+        4. warning: potential issues or unexpected situation
+        5. error: only errors and exceptions (bottom-level)
+        6. off: turn off entire logging
