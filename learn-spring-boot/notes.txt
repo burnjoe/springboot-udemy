@@ -1,4 +1,4 @@
-Get Production Ready with Spring Boot
+Get Production Ready with Spring Boot 
     - There are different types of environments some of which are:
         - Development (dev)
         - Quality Assurance (qa)
@@ -13,3 +13,26 @@ Get Production Ready with Spring Boot
         4. warning: potential issues or unexpected situation
         5. error: only errors and exceptions (bottom-level)
         6. off: turn off entire logging
+
+Simplify Deployment with Spring Boot Embedded Servers
+    - WAR Approach (OLD)
+        - WAR
+        - Web Server (Tomcat/Weblogic/WebSphere etc)
+        - Java
+    - Embedded Approach
+        - JAR (Embedded Server - Tomcat...)
+        - Java
+    - How do you deploy your application? (WAR Approach) - Complex to setup
+        1. Install Java
+        2. Install Web/Application Server (Tomcat/Weblogic/WebSphere etc)
+        3. Deploy the application WAR (Web ARchive)
+    - Embedded Server - Simpler Alternative
+        1. Install Java
+        2. Run JAR file
+    - Command for running JAR file in /target folder
+        - java -jar [.jar file]
+    - Make JAR not WAR (by Josh Long)
+    - Embedded Server Examples:
+        - spring-boot-starter-tomcat
+        - spring-boot-starter-jetty
+        - spring-boot-starter-undertow
