@@ -1,0 +1,84 @@
+Get Production Ready with Spring Boot 
+    - There are different types of environments some of which are:
+        - Development (dev)
+        - Quality Assurance (qa)
+        - Staging (stage)
+        - Production (prod)
+    - There are multiple logging levels supported in Spring Boot:
+    - Top-level logs all beneath it, for example 'debug' logs debug, info, warning, and error
+    - Example: logging.level.org.springframework=debug
+        1. trace: most detailed capturing almost all events (top-level)
+        2. debug: detailed info on app flow
+        3. info: general runtime info about app major events
+        4. warning: potential issues or unexpected situation
+        5. error: only errors and exceptions (bottom-level)
+        6. off: turn off entire logging
+
+
+Simplify Deployment with Spring Boot Embedded Servers
+    - WAR Approach (OLD)
+        - WAR
+        - Web Server (Tomcat/Weblogic/WebSphere etc)
+        - Java
+    - Embedded Approach
+        - JAR (Embedded Server - Tomcat...)
+        - Java
+    - How do you deploy your application? (WAR Approach) - Complex to setup
+        1. Install Java
+        2. Install Web/Application Server (Tomcat/Weblogic/WebSphere etc)
+        3. Deploy the application WAR (Web ARchive)
+    - Embedded Server - Simpler Alternative
+        1. Install Java
+        2. Run JAR file
+    - Command for running JAR file in /target folder
+        - java -jar [.jar file]
+    - Make JAR not WAR (by Josh Long)
+    - Embedded Server Examples:
+        - spring-boot-starter-tomcat
+        - spring-boot-starter-jetty
+        - spring-boot-starter-undertow
+
+
+Monitor Applications using Spring Boot Actuator
+    - Monitor and manage your application in your production
+    - Provides a number of endpoints:
+        - /beans     - Complete list of Spring beans in your app
+        - /health    - Application health information
+        - /metrics   - Application metrics
+        - /mappings  - Details around Request Mappings
+    - Add this to the pom.xml:
+        <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+    - To view actuator links:
+        - http://localhost:8080/actuator
+    - To view application health:
+        - http://localhost:8080/actuator/health
+    - To enable all actuator endpoints, head over to application.properties:
+        - management.endpoints.web.exposure.include=*
+    - To enable specific actuator endpoints, head over to application.properties:
+        - management.endpoints.web.exposure.include=health,metrics
+
+
+Understanding Spring Boot vs Spring MVC vs Spring
+    - Spring Boot vs Spring MVC vs Spring: What's in it?
+        1. Spring Framework: 
+            - Dependency Injection
+                - @Component, @Autowired, @ComponentScan, etc...
+                - Just Dependency Injection is NOT sufficient (You need other frameworks to build apps)
+                    - Spring Modules and Spring Project: Extend Spring Ecosystem
+                        - Provide good integration with other frameworks (Hibernate/JPA, JUnit & Mockito for Unit Testing)
+        2. Spring MVC (Spring Module): 
+            - Simplify building web apps and REST API
+                - Building web applications with Struts was very complex
+                - With Spring MVC you can use @Controller, @RestController, @RequestMapping("/your_endpoint")
+        3. Spring Boot (Spring Project):
+            - Build PRODUCTION-READY apps QUICKLY
+                - Starter Projects      - Make it easy to build variety of applications
+                - Auto Configuration    - Eliminate configuration to setup Spring, Spring MVC, and other frameworks
+                - Enable non-functional requirements (NFRs):
+                    - Actuator          - Enables advanced monitoring of applications
+                    - Embedded Server   - No need for separate application servers
+                    - Logging and Error Handling
+                    - Profiles and Configuration Properties
