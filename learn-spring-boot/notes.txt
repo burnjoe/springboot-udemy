@@ -59,3 +59,26 @@ Monitor Applications using Spring Boot Actuator
         - management.endpoints.web.exposure.include=*
     - To enable specific actuator endpoints, head over to application.properties:
         - management.endpoints.web.exposure.include=health,metrics
+
+
+Understanding Spring Boot vs Spring MVC vs Spring
+    - Spring Boot vs Spring MVC vs Spring: What's in it?
+        1. Spring Framework: 
+            - Dependency Injection
+                - @Component, @Autowired, @ComponentScan, etc...
+                - Just Dependency Injection is NOT sufficient (You need other frameworks to build apps)
+                    - Spring Modules and Spring Project: Extend Spring Ecosystem
+                        - Provide good integration with other frameworks (Hibernate/JPA, JUnit & Mockito for Unit Testing)
+        2. Spring MVC (Spring Module): 
+            - Simplify building web apps and REST API
+                - Building web applications with Struts was very complex
+                - With Spring MVC you can use @Controller, @RestController, @RequestMapping("/your_endpoint")
+        3. Spring Boot (Spring Project):
+            - Build PRODUCTION-READY apps QUICKLY
+                - Starter Projects      - Make it easy to build variety of applications
+                - Auto Configuration    - Eliminate configuration to setup Spring, Spring MVC, and other frameworks
+                - Enable non-functional requirements (NFRs):
+                    - Actuator          - Enables advanced monitoring of applications
+                    - Embedded Server   - No need for separate application servers
+                    - Logging and Error Handling
+                    - Profiles and Configuration Properties
