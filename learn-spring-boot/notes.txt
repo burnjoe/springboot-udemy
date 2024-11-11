@@ -14,6 +14,7 @@ Get Production Ready with Spring Boot
         5. error: only errors and exceptions (bottom-level)
         6. off: turn off entire logging
 
+
 Simplify Deployment with Spring Boot Embedded Servers
     - WAR Approach (OLD)
         - WAR
@@ -36,3 +37,25 @@ Simplify Deployment with Spring Boot Embedded Servers
         - spring-boot-starter-tomcat
         - spring-boot-starter-jetty
         - spring-boot-starter-undertow
+
+
+Monitor Applications using Spring Boot Actuator
+    - Monitor and manage your application in your production
+    - Provides a number of endpoints:
+        - /beans     - Complete list of Spring beans in your app
+        - /health    - Application health information
+        - /metrics   - Application metrics
+        - /mappings  - Details around Request Mappings
+    - Add this to the pom.xml:
+        <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+    - To view actuator links:
+        - http://localhost:8080/actuator
+    - To view application health:
+        - http://localhost:8080/actuator/health
+    - To enable all actuator endpoints, head over to application.properties:
+        - management.endpoints.web.exposure.include=*
+    - To enable specific actuator endpoints, head over to application.properties:
+        - management.endpoints.web.exposure.include=health,metrics
