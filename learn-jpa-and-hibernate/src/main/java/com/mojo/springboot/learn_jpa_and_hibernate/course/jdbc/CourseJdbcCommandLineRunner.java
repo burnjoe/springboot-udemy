@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import com.mojo.springboot.learn_jpa_and_hibernate.course.Course;
+
 /*
  * This CommandLineRunner feature allows us to run code on application startup
  * 
@@ -22,6 +24,9 @@ public class CourseJdbcCommandLineRunner implements CommandLineRunner {
     // This is executed at the startup of the Spring Boot application
     @Override
     public void run(String... args) throws Exception {
-        repository.insert();
+        repository.insert(new Course(1, "Learning AWS", "in28minutes"));
+        repository.insert(new Course(2, "Learning Azure", "in28minutes"));
+
+        repository.delete(1);
     }
 }
