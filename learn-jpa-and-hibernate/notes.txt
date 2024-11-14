@@ -1,0 +1,8 @@
+JDBC to Spring JDBC to JPA to Spring Data JPA
+    - JDBC
+        - Write a lot of SQL queries (delete from todo where id=?)
+        - BUT write a lot of Java code
+    - Spring JDBC
+        - Write a lot of SQL queries (delete from todo where id=?)
+        - BUT lesser Java code
+        
