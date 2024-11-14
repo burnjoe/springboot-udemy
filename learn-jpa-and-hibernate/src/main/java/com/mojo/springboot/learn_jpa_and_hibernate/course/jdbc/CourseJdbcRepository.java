@@ -1,6 +1,7 @@
 package com.mojo.springboot.learn_jpa_and_hibernate.course.jdbc;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -26,15 +27,29 @@ public class CourseJdbcRepository {
                 where id = ?;
             """;
 
-    // This method performs the insertion of the course into the database using the JdbcTemplate
+    private static String SELECT_QUERY =
+            """
+                select * from course 
+                where id = ?;
+            """;
+
+    // This method performs the insertion of the course into the database
     public void insert(Course course) {
         // This should be in sequence as in the INSERT_QUERY: (id, name, author)
         springJdbcTemplate.update(INSERT_QUERY,
                 course.getId(), course.getName(), course.getAuthor());
     }
 
-    // This method performs the deletion of the course from the database using the JdbcTemplate
-    public void delete(long id) {
+    // This method performs the deletion of the course from the database
+    public void deleteById(long id) {
         springJdbcTemplate.update(DELETE_QUERY, id);
+    }
+
+    // This method performs the retrieval of the course from the database
+    public Course findById(long id) {
+        // Mappers requires destination object to have setters defined as it'll be used to map values from source to destination object
+        // BeanPropertyRowMapper maps the ResultSet rows to Course fields by name
+        // Mapping of queryForObject result to Course bean: ResultSet -> Bean
+        return springJdbcTemplate.queryForObject(SELECT_QUERY, new BeanPropertyRowMapper<>(Course.class), id);
     }
 }
