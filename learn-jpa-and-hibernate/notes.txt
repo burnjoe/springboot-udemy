@@ -11,3 +11,16 @@ JDBC to Spring JDBC to JPA to Spring Data JPA
     - Spring Data JPA
         - Makes JPA even more simple
         - I will take care of everything
+
+Hibernate vs JPA
+    - Hibernate dependency: hibernate-core-jakarta
+    - JPA dependency: jakarta.persistence-api
+    - JPA defines the specification. It is an API
+        - How do you define entities?  - By annotating @Entity to entity like Course.class
+        - How do you define primary key?  - By adding @Id to entity's id field
+        - How do you map attributes?  - By implicitly/explicitly annotating @Column to entity's fields
+        - Who manages the entities?  - Entity manager, it defines the methods exposed to entity manager
+    - Hibernate is one of the popular implementations of JPA
+    - Using Hibernate directly would result in a lock in to Hibernate (and it is not recommended)
+        - There are other JPA implementations (Toplink, for example)
+    - Using JPA is recommended than directly using its implementations
