@@ -1,10 +1,10 @@
-package com.mojo.springboot.learn_jpa_and_hibernate.course.jdbc;
+package com.mojo.springboot.learn_jpa_and_hibernate.course;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import com.mojo.springboot.learn_jpa_and_hibernate.course.Course;
+import com.mojo.springboot.learn_jpa_and_hibernate.course.jpa.CourseJpaRepository;
 
 /*
  * This CommandLineRunner feature allows us to run code on application startup
@@ -16,10 +16,13 @@ import com.mojo.springboot.learn_jpa_and_hibernate.course.Course;
  */
 
 @Component
-public class CourseJdbcCommandLineRunner implements CommandLineRunner {
+public class CourseCommandLineRunner implements CommandLineRunner {
+
+    // @Autowired
+    // private CourseJdbcRepository repository;
 
     @Autowired
-    private CourseJdbcRepository repository;
+    private CourseJpaRepository repository;
 
     // This is executed at the startup of the Spring Boot application
     @Override
