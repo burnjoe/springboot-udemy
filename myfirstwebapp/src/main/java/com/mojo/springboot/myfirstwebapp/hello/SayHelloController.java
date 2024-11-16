@@ -15,4 +15,20 @@ public class SayHelloController {
     public String sayHello() {
         return "Hello! How are you doing?";
     }
+
+    @RequestMapping("say-hello-html")
+    @ResponseBody
+    public String sayHelloHtml() {
+        // Direct String appending creates new objects (not efficient); StringBuilder is faster and memory-efficient.
+        StringBuffer sb = new StringBuffer();
+        sb.append("<html>");
+        sb.append("<head>");
+        sb.append("<title>My first HTML Page</title>");
+        sb.append("</head>");
+        sb.append("<body>");
+        sb.append("My first html page with body");
+        sb.append("</body>");
+        sb.append("</html>");
+        return sb.toString();
+    }
 }
