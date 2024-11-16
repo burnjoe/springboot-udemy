@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class SayHelloController {
     
+    // Returns a String response
     @RequestMapping("say-hello")
     // Return anything returned by this method as response body may it be string or object
     // Without @ResponseBody annotation Spring assumes that the method
@@ -16,6 +17,7 @@ public class SayHelloController {
         return "Hello! How are you doing?";
     }
 
+    // Returns an HTML response
     @RequestMapping("say-hello-html")
     @ResponseBody
     public String sayHelloHtml() {
@@ -30,5 +32,18 @@ public class SayHelloController {
         sb.append("</body>");
         sb.append("</html>");
         return sb.toString();
+    }
+
+    // Returns an HTML response from JSP
+    // This is handled by View Resolver configured in 'application.properties'
+    // When /say-hello-jsp is requested it redirects client to sayHello.jsp
+    // "say-hello-jsp" -> sayHello.jsp
+    // /src/main/resources/META-INF/resources/WEB-INF/jsp/sayHello.jsp
+    // Returning an HTML response from JSP does not need @ResponseBody
+    @RequestMapping("say-hello-jsp")
+    public String sayHelloJsp() {
+        // This returns the jsp with the filename sayHello, this refers to sayHello.jsp
+        // Please refer configuration in 'application.properties'
+        return "sayHello";
     }
 }
