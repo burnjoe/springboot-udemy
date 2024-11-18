@@ -2,3 +2,11 @@ Building Java Web Application
     - JSP means JavaServer Pages
     - All JSPs should be created in this specific directory (Standard)
         - /src/main/resources/META-INF/resources/WEB-INF/jsp/
+
+How does Web work?
+    - A: Browser sends a request
+        - HttpRequest
+    - B: Server handles the request
+        - Your Spring Boot Web Application
+    - C: Server returns the response
+        - HttpResponse
