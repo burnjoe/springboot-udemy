@@ -10,3 +10,40 @@ How does Web work?
         - Your Spring Boot Web Application
     - C: Server returns the response
         - HttpResponse
+
+Peek into History - Model 1 Arch.
+    - ALL CODE in Views (JSPs, ...)
+        - View Logic
+        - Flow Logic
+        - Queries to databases
+    - Disadvantages:
+        - VERY complex JSPs
+        - ZERO separation of concerns
+        - Difficult to maintain
+
+Peek into History - Model 2 Arch.
+    - How about separating concerns?
+        - Model: Data to generate the view
+        - View: Show information to client/user
+        - Controller: Controls the flow
+    - Advantages:
+        - Simpler to maintain
+    - Concerns:
+        -Where to implement common features to all controllers (Solution: see Model 2 Architecture with Front Controller)
+    - Model 2 Architecture with Front Controller
+        - Concept: All requests flow into a central controller
+            - Called as Front Controller
+        - Front Controller controls flow to Controller's and View's
+            - Common features can be implemented in the Front Controller
+
+Spring MVC Front Controller - Dispatcher Servlet
+    - A: Receives HTTP request
+    - B: Processes HTTP request
+        - B1: Identifies correct Controller method
+            - Based on request URL
+        - B2: Executes Controller method
+            - Returns Model and View Name
+        - B3: Identifies the correct view
+            - Using View Resolver
+        - B4: Executes View
+    - C: Returns HTTP response
