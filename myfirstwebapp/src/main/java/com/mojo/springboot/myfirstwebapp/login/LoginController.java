@@ -6,9 +6,11 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 
 @Controller
+@SessionAttributes("name")
 public class LoginController {
 
     @Autowired
@@ -22,17 +24,19 @@ public class LoginController {
     public String goToLogin() {
         return "login";
     }
-    
+
     // http://localhost:8080/login | method = POST
     // Both name and password is fetched from the request payload
     @RequestMapping(value = "login", method = RequestMethod.POST)
     public String goToWelcomePage(@RequestParam String name, @RequestParam String password, ModelMap model) {
         // Authentication
         if (authenticationService.authenticate(name, password)) {
-            model.put("name", name);
+            model.addAttribute("name", name);
+            // model.put("name", name);
             return "welcome";
         }
-        model.put("errorMessage", "Invalid Credentials. Please Try Again.");
+        model.addAttribute("errorMessage", "Invalid Credentials. Please Try Again.");
+        // model.put("errorMessage", "Invalid Credentials. Please Try Again.");
         return "login";
     }
 }
