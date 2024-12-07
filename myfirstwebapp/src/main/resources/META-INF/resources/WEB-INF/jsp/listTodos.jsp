@@ -1,9 +1,35 @@
+<!-- Directive in JSPs to import or declare a tag library --> 
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+
 <html>
   <head>
     <title>List Todos Page</title>
   </head>
   <body>
-    <div>Welcome ${name}!</div>
-    <div>Your Todos are ${todos}</div>
+    <div>Welcome ${name}!</div> 
+    <hr>
+    <h1>Your Todos</h1>
+    <!--  -->
+    <table>
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Description</th>
+          <th>Target Date</th>
+          <th>Is Done?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Uses the custom tag "forEach" of JSTL -->
+        <c:forEach items="${todos}" var="todo">
+          <tr>
+            <td>${todo.id}</td>
+            <td>${todo.description}</td>
+            <td>${todo.targetDate}</td>
+            <td>${todo.done}</td>
+          </tr>
+        </c:forEach>
+      </tbody>
+    </table>
   </body>
 </html>
