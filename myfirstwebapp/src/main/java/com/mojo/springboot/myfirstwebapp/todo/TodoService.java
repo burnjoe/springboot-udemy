@@ -11,16 +11,25 @@ public class TodoService {
     
     private static List<Todo> todos = new ArrayList<>();
 
+    private static int todosCount = 0;
+
     // Static Block
     // A special block of code in Java that is used to initialize static variables 
     static {
-        todos.add(new Todo(1, "mojo", "Learn AWS", 
+        todos.add(new Todo(++todosCount, "mojo", "Learn AWS", 
                 LocalDate.now().plusMonths(1), false));
-        todos.add(new Todo(2, "mojo", "Learn DevOps", 
+        todos.add(new Todo(++todosCount, "mojo", "Learn DevOps", 
                 LocalDate.now().plusMonths(2), false));
     }
 
+    // Finds all Todos by username
     public List<Todo> findByUsername(String username) {
         return todos;
+    }
+
+    // Adds a Todo
+    public void addTodo(String username, String description, LocalDate targetDate, boolean done) {
+        Todo todo = new Todo(++todosCount, username, description, targetDate, done);
+        todos.add(todo);
     }
 }
