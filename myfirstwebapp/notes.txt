@@ -60,3 +60,13 @@ Request vs Model vs Session
         - Stores data across multiple HTTP requests for a user, tied to their session
         - Lives across multiple HTTP requests, lasting until the session times out or is invalidated
         - Be careful of what to store to session (Takes additional memory as all details are stored on server)
+
+Validations with Spring Boot (Steps)
+    - 1. Spring Boot Starter Validation
+        - Add dependency in pom.xml
+    - 2. Command Bean (Form Backing Object)
+        - 2-way binding (addTodo.jsp & TodoController.jsp)
+    - 3. Add Validation to Bean
+        - Todo.Java
+    - 4. Display Validation Errors in View
+        - todo.jsp
