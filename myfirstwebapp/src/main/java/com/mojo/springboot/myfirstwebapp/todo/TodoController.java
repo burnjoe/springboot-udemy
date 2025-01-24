@@ -39,17 +39,24 @@ public class TodoController {
     // e.g., @RequestMapping("add-todo")
     // Having the 'method' argument passed, it will handle only the specified HTTP method
     @RequestMapping(value = "add-todo", method = RequestMethod.GET)
-    public String showAddTodoPage() {
+    public String showAddTodoPage(ModelMap model) {
+        // This is to bind the Todo object to the form in addTodo.jsp
+        String username = (String) model.get("name");
+        Todo todo = new Todo(0, username, "", 
+                LocalDate.now().plusDays(7), false);
+        model.put("todo", todo);
         return "addTodo";
     }
 
     // Adds a Todo
     @RequestMapping(value = "add-todo", method = RequestMethod.POST)
     // @RequestParam is used to bind the form data to the method parameter
-    public String addTodo(@RequestParam String description, ModelMap model) {
+    // Instead of using @RequestParam for number of attributes required, we can use the Todo model (called as form backing object) as parameter to bind the form data
+    // Note that the ModelMap would be the first parameter in the method signature
+    public String addTodo(ModelMap model, Todo todo) {
         // TODO: Allow to provide desired target date
         String username = (String) model.get("name");
-        todoService.addTodo(username, description, 
+        todoService.addTodo(username, todo.getDescription(), 
                 LocalDate.now().plusDays(7), false);
 
         // Returning just this will only return the plain view, not the view with the model (ModelMap) containing the todos
