@@ -8,7 +8,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+
+/*
+ * Two-way binding:
+ * - The first side is when we set the model attribute in the controller method to be binded in the jsp form
+ * - The second side is when we bind the form data to the method parameter in the controller method upon form submission
+ */
 
 @Controller
 public class TodoController {
@@ -41,6 +46,8 @@ public class TodoController {
     @RequestMapping(value = "add-todo", method = RequestMethod.GET)
     public String showAddTodoPage(ModelMap model) {
         // This is to bind the Todo object to the form in addTodo.jsp
+        // This is the first side of the two-way binding (Whatever is set in the ModelMap model will be displayed in the form)
+        // Which is the created Todo object with the default values
         String username = (String) model.get("name");
         Todo todo = new Todo(0, username, "", 
                 LocalDate.now().plusDays(7), false);
@@ -53,6 +60,7 @@ public class TodoController {
     // @RequestParam is used to bind the form data to the method parameter
     // Instead of using @RequestParam for number of attributes required, we can use the Todo model (called as form backing object) as parameter to bind the form data
     // Note that the ModelMap would be the first parameter in the method signature
+    // This is the second side of the two-way binding (Whatever is submitted in the form will be binded in the Todo object)
     public String addTodo(ModelMap model, Todo todo) {
         // TODO: Allow to provide desired target date
         String username = (String) model.get("name");

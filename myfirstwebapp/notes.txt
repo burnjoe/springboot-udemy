@@ -70,3 +70,9 @@ Validations with Spring Boot (Steps)
         - Todo.Java
     - 4. Display Validation Errors in View
         - todo.jsp
+
+Understanding Two-way Binding
+    - First Side: Controller Bean to JSP Form
+        - e.g., Binding data from data in controller method's body to form data in jsp
+    - Second Side: JSP Form to Controller Bean
+        - e.g., Binding data from form in jsp to controller method's parameter
