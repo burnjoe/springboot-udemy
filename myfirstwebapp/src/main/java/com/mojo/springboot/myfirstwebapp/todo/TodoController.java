@@ -6,8 +6,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import jakarta.validation.Valid;
 
 /*
  * Two-way binding:
@@ -61,8 +64,16 @@ public class TodoController {
     // Instead of using @RequestParam for number of attributes required, we can use the Todo model (called as form backing object) as parameter to bind the form data
     // Note that the ModelMap would be the first parameter in the method signature
     // This is the second side of the two-way binding (Whatever is submitted in the form will be binded in the Todo object)
-    public String addTodo(ModelMap model, Todo todo) {
+    // @Valid is used to validate the Todo object based on the validation rules set in the Todo class
+    // BindingResult is used to get the validation result
+    public String addTodo(ModelMap model, @Valid Todo todo, BindingResult result) {
         // TODO: Allow to provide desired target date
+
+        // If there are validation errors, return the addTodo page
+        if (result.hasErrors()) {
+            return "addTodo";
+        }
+        
         String username = (String) model.get("name");
         todoService.addTodo(username, todo.getDescription(), 
                 LocalDate.now().plusDays(7), false);

@@ -16,6 +16,9 @@
 			<form:form method="post" modelAttribute="todo">
         <!-- path="description" maps the 'description' form input to the model's attribute Todo.description to bind it -->
 				Description: <form:input type="text" name="description" path="description" required="required" />
+        <!-- Binds the BindingResult errors for description -->
+        <!-- This is a form tag library, so instead of using class="" attribute, a cssClass="" should work -->
+        <form:errors path="description" cssClass="text-warning" />
         <!-- Added these hidden inputs to fix validation error in 'id' and 'done' attributes -->
 				<form:input type="hidden" name="id" path="id" />
         <form:input type="hidden" name="done" path="done" />

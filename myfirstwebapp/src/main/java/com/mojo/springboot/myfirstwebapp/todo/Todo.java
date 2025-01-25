@@ -2,10 +2,16 @@ package com.mojo.springboot.myfirstwebapp.todo;
 
 import java.time.LocalDate;
 
+import jakarta.validation.constraints.Size;
+
 public class Todo {
     
     private int id;
     private String username;
+
+    // Validation rule for the description field
+    // Requiring @Valid annotation in the controller method parameter to validate the Todo object
+    @Size(min = 10, message = "Enter at least 10 characters.")
     private String description;
     private LocalDate targetDate;
     private boolean done;
