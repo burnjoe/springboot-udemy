@@ -9,6 +9,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import jakarta.validation.Valid;
 
@@ -82,6 +83,15 @@ public class TodoController {
         // return "listTodos";
 
         // Redirects to the '/list-todos'
-        return "redirect:/list-todos";
+        // return "redirect:/list-todos"; or
+        return "redirect:list-todos";
+    }
+
+    // Deletes a Todo
+    @RequestMapping("delete-todo")
+    // The 'id' query parameter is binded to the 'id' method parameter /delete-todo?id=N (where N is the id)
+    public String deleteTodo(@RequestParam int id) {   
+        todoService.deleteTodoById(id);        
+        return "redirect:list-todos";
     }
 }
