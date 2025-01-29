@@ -54,4 +54,10 @@ public class TodoService {
                 .findFirst()
                 .get();
     }
+
+    // Updates a Todo
+    public void updateTodo(Todo todo) {
+        deleteTodoById(todo.getId());
+        todos.add(todo);
+    }
 }

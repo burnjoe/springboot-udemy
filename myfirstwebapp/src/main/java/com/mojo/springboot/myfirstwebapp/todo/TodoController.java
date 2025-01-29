@@ -96,10 +96,25 @@ public class TodoController {
     }
 
     // Shows Edit Todo Page
-    @RequestMapping("edit-todo")
+    @RequestMapping(value = "edit-todo", method = RequestMethod.GET)
     public String showEditTodoPage(@RequestParam int id, ModelMap model) {
         Todo todo = todoService.findById(id);
         model.addAttribute("todo", todo);
         return "addEditTodo";
+    }
+
+    // Updates a Todo
+    @RequestMapping(value = "edit-todo", method = RequestMethod.POST)
+    public String editTodo(ModelMap model, @Valid Todo todo, BindingResult result) {
+        // If there are validation errors, return the addEditTodo page
+        if (result.hasErrors()) {
+            return "addEditTodo";
+        }
+
+        String username = (String) model.get("name");
+        todo.setUsername(username);
+        todoService.updateTodo(todo);
+
+        return "redirect:list-todos";
     }
 }
