@@ -49,14 +49,14 @@ public class TodoController {
     // Having the 'method' argument passed, it will handle only the specified HTTP method
     @RequestMapping(value = "add-todo", method = RequestMethod.GET)
     public String showAddTodoPage(ModelMap model) {
-        // This is to bind the Todo object to the form in addTodo.jsp
+        // This is to bind the Todo object to the form in addEditTodo.jsp
         // This is the first side of the two-way binding (Whatever is set in the ModelMap model will be displayed in the form)
         // Which is the created Todo object with the default values
         String username = (String) model.get("name");
         Todo todo = new Todo(0, username, "", 
                 LocalDate.now().plusDays(7), false);
         model.put("todo", todo);
-        return "addTodo";
+        return "addEditTodo";
     }
 
     // Adds a Todo
@@ -70,9 +70,9 @@ public class TodoController {
     public String addTodo(ModelMap model, @Valid Todo todo, BindingResult result) {
         // TODO: Allow to provide desired target date
 
-        // If there are validation errors, return the addTodo page
+        // If there are validation errors, return the addEditTodo page
         if (result.hasErrors()) {
-            return "addTodo";
+            return "addEditTodo";
         }
         
         String username = (String) model.get("name");
@@ -93,5 +93,13 @@ public class TodoController {
     public String deleteTodo(@RequestParam int id) {   
         todoService.deleteTodoById(id);        
         return "redirect:list-todos";
+    }
+
+    // Shows Edit Todo Page
+    @RequestMapping("edit-todo")
+    public String showEditTodoPage(@RequestParam int id, ModelMap model) {
+        Todo todo = todoService.findById(id);
+        model.addAttribute("todo", todo);
+        return "addEditTodo";
     }
 }

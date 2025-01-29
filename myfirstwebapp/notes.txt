@@ -65,7 +65,7 @@ Validations with Spring Boot (Steps)
     - 1. Spring Boot Starter Validation
         - Add dependency in pom.xml
     - 2. Command Bean (Form Backing Object)
-        - 2-way binding (addTodo.jsp & TodoController.jsp)
+        - 2-way binding (addEditTodo.jsp & TodoController.jsp)
     - 3. Add Validation to Bean
         - Todo.Java
     - 4. Display Validation Errors in View

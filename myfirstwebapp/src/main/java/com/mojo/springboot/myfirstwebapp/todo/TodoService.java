@@ -44,4 +44,14 @@ public class TodoService {
         // Shorter version of predicate usage
         // todos.removeIf(todo -> todo.getId() == id);
     }
+
+    // Finds a Todo by id
+    public Todo findById(int id) {
+        // stream() method returns a sequential Stream with this collection as its source
+        // See Functional Programming and Stream API for more information
+        return todos.stream()
+                .filter(todo -> todo.getId() == id)
+                .findFirst()
+                .get();
+    }
 }
