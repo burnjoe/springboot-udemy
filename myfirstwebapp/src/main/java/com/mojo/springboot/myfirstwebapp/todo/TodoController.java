@@ -68,8 +68,6 @@ public class TodoController {
     // @Valid is used to validate the Todo object based on the validation rules set in the Todo class
     // BindingResult is used to get the validation result
     public String addTodo(ModelMap model, @Valid Todo todo, BindingResult result) {
-        // TODO: Allow to provide desired target date
-
         // If there are validation errors, return the addEditTodo page
         if (result.hasErrors()) {
             return "addEditTodo";
@@ -77,7 +75,7 @@ public class TodoController {
         
         String username = (String) model.get("name");
         todoService.addTodo(username, todo.getDescription(), 
-                LocalDate.now().plusDays(7), false);
+                todo.getTargetDate(), false);
 
         // Returning just this will only return the plain view, not the view with the model (ModelMap) containing the todos
         // return "listTodos";
