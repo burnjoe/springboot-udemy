@@ -4,9 +4,8 @@
   <%@ include file="common/navigation.jspf" %>
   
   <div class="container">
-    <h1>Welcome to Mojo!</h1>
-    <h2>Your Name: ${name}</h2>
-    <a href="http://localhost:8080/list-todos">See List Todos</a>
+    <h1>Welcome to Todo App!</h1>
+    <a href="http://localhost:8080/list-todos">Manage List Todos</a>
   </div>
 
 <!-- Uses Footer JSP Fragment -->
