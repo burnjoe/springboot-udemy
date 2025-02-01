@@ -82,3 +82,4 @@ Adding Spring Security
         - You will see a console log for your generated security password for development environment:
             - Username: user (default)
             - Password: 3ddaf5ac-205c-4686-ba16-083b90683dfa (this is logged in your console)
+        - If we create Spring Security configuration to allow us to create a custom username and password, we don't have to use the generated password again
