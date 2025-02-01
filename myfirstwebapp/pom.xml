@@ -35,6 +35,12 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
+		<!-- Add this dependency to add Spring Security -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
 		<!-- Add this dependency to provide Spring Boot DevTools -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

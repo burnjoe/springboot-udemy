@@ -76,3 +76,9 @@ Understanding Two-way Binding
         - e.g., Binding data from data in controller method's body to form data in jsp
     - Second Side: JSP Form to Controller Bean
         - e.g., Binding data from form in jsp to controller method's parameter
+
+Adding Spring Security
+    - Upon adding Spring Security and running your project:
+        - You will see a console log for your generated security password for development environment:
+            - Username: user (default)
+            - Password: 3ddaf5ac-205c-4686-ba16-083b90683dfa (this is logged in your console)
