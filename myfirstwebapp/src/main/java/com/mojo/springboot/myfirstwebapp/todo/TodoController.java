@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -34,8 +36,11 @@ public class TodoController {
     // List Todos
     @RequestMapping("list-todos")
     public String listAllTodos(ModelMap model) {
+        // String username = (String) model.get("name");
+        String username = getLoggedInUsername(model);
+
         // TODO: Allow to get the username from the session
-        List<Todo> todos = todoService.findByUsername("mojo");
+        List<Todo> todos = todoService.findByUsername(username);
         
         // Similar to model.put() but model.addAttribute() is the recommended way
         model.addAttribute("todos", todos);
@@ -52,7 +57,9 @@ public class TodoController {
         // This is to bind the Todo object to the form in addEditTodo.jsp
         // This is the first side of the two-way binding (Whatever is set in the ModelMap model will be displayed in the form)
         // Which is the created Todo object with the default values
-        String username = (String) model.get("name");
+        // String username = (String) model.get("name");
+
+        String username = getLoggedInUsername(model);
         Todo todo = new Todo(0, username, "", 
                 LocalDate.now().plusDays(7), false);
         model.put("todo", todo);
@@ -73,7 +80,8 @@ public class TodoController {
             return "addEditTodo";
         }
         
-        String username = (String) model.get("name");
+        // String username = (String) model.get("name");
+        String username = getLoggedInUsername(model);
         todoService.addTodo(username, todo.getDescription(), 
                 todo.getTargetDate(), false);
 
@@ -109,10 +117,19 @@ public class TodoController {
             return "addEditTodo";
         }
 
-        String username = (String) model.get("name");
+        // String username = (String) model.get("name");
+        String username = getLoggedInUsername(model);
         todo.setUsername(username);
         todoService.updateTodo(todo);
 
         return "redirect:list-todos";
+    }
+
+    // Gets the logged in username
+    private String getLoggedInUsername(ModelMap model) {
+        Authentication authentication = SecurityContextHolder.getContext()
+                .getAuthentication();
+
+        return authentication.getName();
     }
 }
