@@ -27,18 +27,28 @@ public class SpringSecurityConfiguration {
         //         .roles("USER", "ADMIN")
         //         .build();
 
+        // createNewUser allows us to create new users with the username and password entered by the user in the login form
+        UserDetails userDetails1 = createNewUser("mojo", "password");
+        UserDetails userDetails2 = createNewUser("admin", "password");
+        UserDetails userDetails3 = createNewUser("user", "password");
+        
+        return new InMemoryUserDetailsManager(userDetails1, userDetails2, userDetails3);
+    }
+
+    // This method is used to create a new user with the username and password entered by the user in the login form
+    private UserDetails createNewUser(String username, String password) {
         // We use this lambda function to encode the password entered by the user in the login form
         Function<String, String> passwordEncoder = input -> passwordEncoder().encode(input);
-
+        
         // We use Builder to create a User (This one is not deprecated)
         UserDetails userDetails = User.builder()
                 .passwordEncoder(passwordEncoder)
-                .username("mojo")
-                .password("password")
+                .username(username)
+                .password(password)
                 .roles("USER", "ADMIN")
                 .build();
-        
-        return new InMemoryUserDetailsManager(userDetails);
+
+        return userDetails;
     }
 
     // This bean is used to encode the password entered by the user in the login form to check if it matches the encoded password stored in the UserDetails
