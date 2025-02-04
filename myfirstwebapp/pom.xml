@@ -35,6 +35,20 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
+		<!-- Add this dependency to add Spring Starter Data JPA -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+
+		<!-- Add this dependency to add H2 Database -->
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<!-- Adding scope runtime would make this h2 dependency not be part of the jar file -->
+			<scope>runtime</scope>
+		</dependency>
+
 		<!-- Add this dependency to add Spring Security -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
