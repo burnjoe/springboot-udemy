@@ -2,13 +2,23 @@ package com.mojo.springboot.myfirstwebapp.security;
 
 import java.util.function.Function;
 
+// Import static function withDefaults()
+import static org.springframework.security.config.Customizer.withDefaults;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.web.SecurityFilterChain;
+
+/*
+ * All URLs are protected
+ * A login form is shown for unauthorized requests (Even requests to non-existent URLs will redirect to the login form)
+ */
 
 @Configuration
 public class SpringSecurityConfiguration {
@@ -56,5 +66,23 @@ public class SpringSecurityConfiguration {
     public PasswordEncoder passwordEncoder() {
         // BCryptPasswordEncoder is a class that implements PasswordEncoder from Spring Security
         return new BCryptPasswordEncoder();
+    }
+
+    // To Access H2 console we need to Disable CSRF & Allow Frames (Since Spring Security does not allow frames by default)
+    // SecurityFilterChain - defines a filter chain matched against every requests (This is the one that process the redirection to the login form when an unauthorized request is made)
+    // We are overriding the SecurityFilterChain, so we need to define the entire chain again
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        // For any request, we want to ensure it is authenticated
+        http.authorizeHttpRequests(auth -> auth.anyRequest().authenticated());
+        http.formLogin(withDefaults());
+
+        // Deprecated csrf() and headers() - TODO: Search for replacement: csrf(x) and headers(x)
+        // Disable CSRF
+        http.csrf().disable();
+        // Allow Frames
+        http.headers().frameOptions().disable();
+
+        return http.build();
     }
 }
