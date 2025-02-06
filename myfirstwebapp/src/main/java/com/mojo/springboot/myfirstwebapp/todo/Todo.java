@@ -2,11 +2,29 @@ package com.mojo.springboot.myfirstwebapp.todo;
 
 import java.time.LocalDate;
 
+// import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.Size;
 
+// Bean --Maps-to--> Database Table
+// e.g., Todo class --> Todo table
+// Classes annotated with @Entity means that this bean maps to a database table (think of a Model in an MVC framework)
+// Spring Boot auto-configuration: if it sees a class annotated with @Entity, it will create an h2 table for that class automatically
+// This class will be mapped to a table called "TodoTable"
+// @Entity(name = "TodoTable")
+@Entity
 public class Todo {
     
+    // @Id annotation means that this field is the primary key
+    // @GeneratedValue generates the primary key with a sequence
+    @Id
+    @GeneratedValue
     private int id;
+
+    // This field will be mapped to a column called "user_name"
+    // @Column(name = "user_name")
     private String username;
 
     // Validation rule for the description field
