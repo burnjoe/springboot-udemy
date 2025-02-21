@@ -12,7 +12,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 import jakarta.validation.Valid;
 
@@ -22,17 +21,18 @@ import jakarta.validation.Valid;
  * - The second side is when we bind the form data to the method parameter in the controller method upon form submission
  */
 
-// @Controller
-@SessionAttributes("name")
-public class TodoController {
+@Controller
+public class TodoControllerJpa {
     
-    @Autowired
     private TodoService todoService;
 
+    private TodoRepository todoRepository;
+
     // Autowires it implicitly
-    public TodoController(TodoService todoService) {
+    public TodoControllerJpa(TodoService todoService, TodoRepository todoRepository) {
         super();
         this.todoService = todoService;
+        this.todoRepository = todoRepository;
     }
 
     // List Todos
@@ -42,7 +42,7 @@ public class TodoController {
         String username = getLoggedInUsername(model);
 
         // TODO: Allow to get the username from the session
-        List<Todo> todos = todoService.findByUsername(username);
+        List<Todo> todos = todoRepository.findByUsername(username);
         
         // Similar to model.put() but model.addAttribute() is the recommended way
         model.addAttribute("todos", todos);
