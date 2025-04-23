@@ -42,11 +42,18 @@
 		</dependency>
 
 		<!-- Add this dependency to add H2 Database -->
-		<dependency>
+		<!-- <dependency>
 			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
+			<artifactId>h2</artifactId> -->
 			<!-- Adding scope runtime would make this h2 dependency not be part of the jar file -->
-			<scope>runtime</scope>
+			<!-- <scope>runtime</scope>
+		</dependency> -->
+
+		<!-- Add this dependency to enable MySQL database connectivity -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.33</version>
 		</dependency>
 
 		<!-- Add this dependency to add Spring Security -->
