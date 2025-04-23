@@ -112,6 +112,7 @@ Docker Notes
     - The mysqlsh Command
         > mysqlsh
         > \connect todos-user@localhost:3306
+        > \use todos
         > \sql
         > user todos
         > select * from todo;
