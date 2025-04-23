@@ -93,3 +93,9 @@ Spring Boot Auto Configuration Magic - Data JPA
             - Launch a few scripts at startup (example: data.sql in /resources)
     - You can show the generated query when using methods in jpa repository like .save(), .findById(), etc.
         - By typing in application.properties: spring.jpa.show-sql=true
+
+Remember (Take Notes):
+    - H2 is in-memory database
+        - It does not persist data
+        - Great for learning or testing
+        - Not an option for production
