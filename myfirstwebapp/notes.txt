@@ -83,3 +83,13 @@ Adding Spring Security
             - Username: user (default)
             - Password: 3ddaf5ac-205c-4686-ba16-083b90683dfa (this is logged in your console)
         - If we create Spring Security configuration to allow us to create a custom username and password, we don't have to use the generated password again
+
+Spring Boot Auto Configuration Magic - Data JPA
+    - We added Data JPA and H2 dependencies
+        - Spring Boot Auto Configuration does some magic
+            - Initialize JPA and Spring Data JPA frameworks
+            - Launch an in memory database (H2)
+            - Setup connection from App to in-memory database
+            - Launch a few scripts at startup (example: data.sql in /resources)
+    - You can show the generated query when using methods in jpa repository like .save(), .findById(), etc.
+        - By typing in application.properties: spring.jpa.show-sql=true
