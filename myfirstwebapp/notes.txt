@@ -99,3 +99,35 @@ Remember (Take Notes):
         - It does not persist data
         - Great for learning or testing
         - Not an option for production
+
+Docker Notes
+    - Launch MySQL using Docker
+        - docker run --detach --env MYSQL_ROOT_PASSWORD=dummypassword --env MYSQL_USER=todos-user --env MYSQL_PASSWORD=dummytodos --env MYSQL_DATABASE=todos --name mysql --publish 3306:3306 mysql:8-oracle
+    - Add to application.properties
+        - spring.jpa.hibernate.ddl-auto=update
+        - spring.datasource.url=jdbc:mysql://localhost:3306/todos
+        - spring.datasource.username=todos-user
+        - spring.datasource.password=dummytodos
+        - spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
+    - The mysqlsh Command
+        > mysqlsh
+        > \connect todos-user@localhost:3306
+        > \sql
+        > user todos
+        > select * from todo;
+        > \quit
+    
+Changes to MySQL Connector
+    - Use mysql-connector-j instead of mysql-connector-java if you are using Spring Boot 3.1 or greater.
+    - Remember: groupId is a little different (com.mysql instead of mysql)
+    - Here's a history lesson - https://blogs.oracle.com/mysql/post/mysql-connectorj-has-new-maven-coordinates
+    - Use this for Spring Boot 3.1 and higher
+        <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+        </dependency>
+    - Use this if you are using Spring Boot 3.0 or lower
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency> 
