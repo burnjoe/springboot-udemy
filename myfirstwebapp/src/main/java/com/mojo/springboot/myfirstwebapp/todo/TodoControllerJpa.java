@@ -3,7 +3,6 @@ package com.mojo.springboot.myfirstwebapp.todo;
 import java.time.LocalDate;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -24,14 +23,11 @@ import jakarta.validation.Valid;
 @Controller
 public class TodoControllerJpa {
     
-    private TodoService todoService;
-
     private TodoRepository todoRepository;
 
     // Autowires it implicitly
-    public TodoControllerJpa(TodoService todoService, TodoRepository todoRepository) {
+    public TodoControllerJpa(TodoRepository todoRepository) {
         super();
-        this.todoService = todoService;
         this.todoRepository = todoRepository;
     }
 
@@ -84,8 +80,10 @@ public class TodoControllerJpa {
         
         // String username = (String) model.get("name");
         String username = getLoggedInUsername(model);
-        todoService.addTodo(username, todo.getDescription(), 
-                todo.getTargetDate(), false);
+
+        // Setting the username in the Todo object to be saved in the database using the repository
+        todo.setUsername(username);
+        todoRepository.save(todo);
 
         // Returning just this will only return the plain view, not the view with the model (ModelMap) containing the todos
         // return "listTodos";
@@ -99,14 +97,15 @@ public class TodoControllerJpa {
     @RequestMapping("delete-todo")
     // The 'id' query parameter is binded to the 'id' method parameter /delete-todo?id=N (where N is the id)
     public String deleteTodo(@RequestParam int id) {   
-        todoService.deleteTodoById(id);        
+        todoRepository.deleteById(id);
         return "redirect:list-todos";
     }
 
     // Shows Edit Todo Page
     @RequestMapping(value = "edit-todo", method = RequestMethod.GET)
     public String showEditTodoPage(@RequestParam int id, ModelMap model) {
-        Todo todo = todoService.findById(id);
+        // The findById() method returns an Optional<Todo> object from the repository, so we need to call get() to get the Todo object
+        Todo todo = todoRepository.findById(id).get();
         model.addAttribute("todo", todo);
         return "addEditTodo";
     }
@@ -122,7 +121,9 @@ public class TodoControllerJpa {
         // String username = (String) model.get("name");
         String username = getLoggedInUsername(model);
         todo.setUsername(username);
-        todoService.updateTodo(todo);
+
+        // Setting the username in the Todo object to be saved in the database using the repository
+        todoRepository.save(todo);
 
         return "redirect:list-todos";
     }
