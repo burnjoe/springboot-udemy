@@ -1,0 +1,10 @@
+Exploring Rest Controller
+    - @Controller: marks a class as a controller
+    - @RestController: marks a class as a REST controller (@Controller + @ResponseBody)
+    - @RequestMapping: used to map HTTP requests to specific controller methods
+        - @RequestMapping: maps all HTTP methods
+        - @GetMapping: maps HTTP GET requests
+        - @PostMapping: maps HTTP POST requests
+        - @PutMapping: maps HTTP PUT requests
+        - @DeleteMapping: maps HTTP DELETE requests
+        - @PatchMapping: maps HTTP PATCH requests
