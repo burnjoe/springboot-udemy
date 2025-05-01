@@ -23,3 +23,25 @@ What's happening in the background?
         - Auto Configuration (ErrorMvcAutoConfiguration)
     4. How are all jars available (Spring, Spring MVC, Jackson, Tomcat)?
         - Starter Projects: Spring Boot Starter Web (spring-webmvc, spring-web, spring-boot-starter-tomcat, spring-boot-starter-json)
+
+Naming Resources Standards & Methods
+    - GET: /users           -> get all users
+    - POST: /users          -> create a new user
+    - GET: /users/{id}      -> get user by id
+    - PUT: /users/{id}      -> update user by id
+    - DELETE: /users/{id}   -> delete user by id
+    - PATCH: /users/{id}    -> partial update user by id
+    -------------------------------------------------------
+    - GET: /users/{id}/posts            -> get all user's posts
+    - POST: /users/{id}/posts           -> create a user's post
+    - GET: /users/{id}/posts/{id}       -> get user's post by id
+    - PUT: /users/{id}/posts/{id}       -> update user's post by id
+    - DELETE: /users/{id}/posts/{id}    -> delete user's post by id
+    - PATCH: /users/{id}/posts/{id}     -> partial update user's post by id
+
+Resources with and without plurals
+    - With Plurals (Commonly used due to readability and understandability):
+        - /users/{id}/posts
+    - Without Plurals:
+        - /user/{id}/post
+    - NOTE: It's not strictly necessary to use plurals as industries also uses without plurals, it's just a matter of preference (it's only just that it's common to use plurals)
