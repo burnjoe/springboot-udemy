@@ -22,4 +22,10 @@ public class HelloWorldController {
     public String helloWorld() {
         return "Hello World!";
     }
+
+    // Return a new HelloWorldBean object
+    @GetMapping("/hello-world-bean")
+    public HelloWorldBean helloWorldBean() {
+        return new HelloWorldBean("Hello World!");
+    }
 }
