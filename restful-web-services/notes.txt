@@ -8,3 +8,18 @@ Exploring Rest Controller
         - @PutMapping: maps HTTP PUT requests
         - @DeleteMapping: maps HTTP DELETE requests
         - @PatchMapping: maps HTTP PATCH requests
+
+What's happening in the background?
+    - Spring Boot Magic: Enable Debug Logging
+        - Warning: Log change frequently
+    1. How are our requests handled?
+        - DispatcherServlet: Front Controller Pattern
+            - Mapping servlets: dispatcherServlet urls=[/]
+            - Auto Configuration (DispatcherServletAutoConfiguration)
+    2. How does HelloWorldBean object get converted to JSON?
+        - @ResponseBody + JacksonHttpMessageConverters
+            - Auto Configuration (JacksonHttpMessageConvertersConfiguration)
+    3. Who is configuring error mapping?
+        - Auto Configuration (ErrorMvcAutoConfiguration)
+    4. How are all jars available (Spring, Spring MVC, Jackson, Tomcat)?
+        - Starter Projects: Spring Boot Starter Web (spring-webmvc, spring-web, spring-boot-starter-tomcat, spring-boot-starter-json)
