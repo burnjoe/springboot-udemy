@@ -3,6 +3,7 @@ package com.mojo.rest.webservices.restful_web_services.user;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.springframework.stereotype.Component;
 
@@ -23,7 +24,17 @@ public class UserDaoService {
         return users;
     }
 
-    // TODO: public User save(User user) {}
+    // Returns user by id
+    public User findById(int id) {
+        Predicate<? super User> predicate = user -> user.getId() == id;
 
-    // TODO: public User findOne(int id) {}
+        // Using stream to find user by id
+        // Or just put the predicate directly in the filter without a variable for brevity
+        return users.stream()
+                    .filter(predicate)
+                    .findFirst()
+                    .get();
+    }
+
+    // TODO: public User save(User user) {}
 }
