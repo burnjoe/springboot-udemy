@@ -12,11 +12,14 @@ public class UserDaoService {
     
     // Simulate database (Use Spring JPA/Hibernate)
     private static List<User> users = new ArrayList<>();
+    
+    // Simulate auto-incrementing ID
+    private static int usersCount = 0;
 
     static {
-        users.add(new User(1, "Joe", LocalDate.now().minusYears(10)));
-        users.add(new User(2, "Jane", LocalDate.now().minusYears(20)));
-        users.add(new User(3, "John", LocalDate.now().minusYears(30)));
+        users.add(new User(++usersCount, "Joe", LocalDate.now().minusYears(10)));
+        users.add(new User(++usersCount, "Jane", LocalDate.now().minusYears(20)));
+        users.add(new User(++usersCount, "John", LocalDate.now().minusYears(30)));
     }
 
     // Returns all users
@@ -36,5 +39,11 @@ public class UserDaoService {
                     .get();
     }
 
+    // Inserts a new user
+    public User save(User user) {
+        user.setId(++usersCount);
+        users.add(user);
+        return user;
+    }
     // TODO: public User save(User user) {}
 }
