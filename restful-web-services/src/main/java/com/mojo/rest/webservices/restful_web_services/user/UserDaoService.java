@@ -36,7 +36,7 @@ public class UserDaoService {
         return users.stream()
                     .filter(predicate)
                     .findFirst()
-                    .get();
+                    .orElse(null);
     }
 
     // Inserts a new user
