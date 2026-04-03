@@ -45,3 +45,13 @@ Resources with and without plurals
     - Without Plurals:
         - /user/{id}/post
     - NOTE: It's not strictly necessary to use plurals as industries also uses without plurals, it's just a matter of preference (it's only just that it's common to use plurals)
+
+REST APIs Response Status Codes
+1. 200 - Success
+2. 201 - Created
+3. 204 - No Content
+4. 400 - Bad Request
+5. 401 - Unauthorized
+6. 403 - Forbidden
+7. 404 - Not Found
+8. 500 - Internal Server Error
